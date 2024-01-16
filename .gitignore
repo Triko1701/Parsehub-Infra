@@ -6,3 +6,4 @@ terraform.tfstate.backup
 *.tfstate
 *.tfplan
 *.exe filter=lfs diff=lfs merge=lfs -text
+credentials.json
