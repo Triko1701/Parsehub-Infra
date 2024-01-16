@@ -65,7 +65,7 @@ services:
 
     redis:
         image: redis:latest
-        container_name: postgres
+        container_name: redis
         ports:
             - "6379:6379"
         command: redis-server --requirepass "$REDIS_PASSWORD"
@@ -75,7 +75,7 @@ services:
 EOT
 
     sudo docker compose -f $COMPOSE_FILE up -d
-    echo "PostgreSQL Docker container running successfully."
+    echo "Docker containers started successfully."
 
     #############################################
     ##### CLONE PROJECT & SETUP ENVIRONMENT #####
@@ -88,7 +88,7 @@ EOT
     sudo git clone https://github.com/$USER/$PROJECT.git $PROJ_PATH
 
     # Set up the virtual environment
-    VENV="$BASE_DIR/($PROJECT)"_"env"
+    VENV="${BASE_DIR}/${PROJECT}_env"
     VENV_PATH="$VENV/bin/activate"
     python3 -m venv "$VENV"
     source "$VENV_PATH"
@@ -117,10 +117,10 @@ EOT
 
     echo "Setup cron jobs successfully."
 
-    rdp_install_path = "$PROJ_PATH/install_rdp_xfce4.sh"
+    rdp_install_path="$PROJ_PATH/install_rdp_xfce4.sh"
     chmod +x "$rdp_install_path"
-    bash "$rdp_install_path"
-    echo "Install RDP xfce4 successfully."
+    # bash "$rdp_install_path"
+    # echo "Install RDP xfce4 successfully."
     
 else
     echo "Applications have already been initialized."

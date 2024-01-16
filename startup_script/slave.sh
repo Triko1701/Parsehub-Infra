@@ -29,14 +29,14 @@ if [ ! -d "$PROJ_PATH" ]; then
     sudo git clone https://github.com/$USER/$PROJECT.git $PROJ_PATH
 
     # Set up the virtual environment
-    VENV="$BASE_DIR/($PROJECT)"_"env"
+    VENV="${BASE_DIR}/${PROJECT}_env"
     VENV_PATH="$VENV/bin/activate"
     python3 -m venv "$VENV"
     source "$VENV_PATH"
     pip3 install -r "$PROJ_PATH/requirements.txt"
     deactivate
 
-    sleep 300
+    sleep 600
 
 else
     echo "Applications have already been initialized."
