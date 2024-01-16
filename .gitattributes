@@ -1,0 +1,12 @@
+C:/Users/DELL/Desktop/Veprm/Cloud-Configuration/myproject/.terraform/providers/registry.terraform.io/ibm-cloud/ibm/1.56.1/windows_amd64/terraform-provider-ibm_v1.56.1.exe filter=lfs diff=lfs merge=lfs -text
+# Set LF line endings for specific files
+*.sh text eol=lf
+.terraform/providers/registry.terraform.io/hashicorp/google/5.10.0/windows_amd64/terraform-provider-google_v5.10.0_x5.exe filter=lfs diff=lfs merge=lfs -text
+D:/personal/seek[[:space:]]scrapping/Terraform/terraform/providers/registry.terraform.io/hashicorp/google/5.10.0/windows_amd64/terraform-provider-google_v5.10.0_x5.exe filter=lfs diff=lfs merge=lfs -text
+D:/personal/seek[[:space:]]scrapping/Terraform/terraform/providers/registry.terraform.io/ibm-cloud/ibm/1.57.0/windows_amd64/terraform-provider-ibm_v1.57.0.exe filter=lfs diff=lfs merge=lfs -text
+D:/personal/seek[[:space:]]scrapping/Terraform/.terraform/providers/registry.terraform.io/ibm-cloud/ibm/1.57.0/windows_amd64/terraform-provider-ibm_v1.57.0.exe filter=lfs diff=lfs merge=lfs -text
+D:/personal/seek[[:space:]]scrapping/Terraform/.terraform/providers/registry.terraform.io/hashicorp/google/5.10.0/windows_amd64/terraform-provider-google_v5.10.0_x5.exe filter=lfs diff=lfs merge=lfs -text
+terraform.exe filter=lfs diff=lfs merge=lfs -text
+.terraform/providers/registry.terraform.io/ibm-cloud/ibm/1.56.1/windows_amd64/terraform-provider-ibm_v1.56.1.exe filter=lfs diff=lfs merge=lfs -text
+.terraform/providers/registry.terraform.io/ibm-cloud/ibm/1.57.0/windows_amd64/terraform-provider-ibm_v1.57.0.exe filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
