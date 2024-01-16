@@ -44,9 +44,9 @@ if [ ! -d "$PROJ_PATH" ]; then
     COMPOSE_DIR="$BASE_DIR/postgresql_docker"
     COMPOSE_FILE="$COMPOSE_DIR/docker-compose.yml"
 
-    sudo mkdir -p "$COMPOSE_DIR"
+    mkdir -p "$COMPOSE_DIR"
 
-    sudo cat <<EOT >> "$COMPOSE_FILE"
+    cat <<EOT >> "$COMPOSE_FILE"
 version: '3.9'
 
 services:
@@ -56,9 +56,9 @@ services:
         ports:
             - "5432:5432"
         environment:
-            POSTGRES_USER: $USER
-            POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-            POSTGRES_DB: $PROJECT
+            POSTGRES_USER: "$USER"
+            POSTGRES_PASSWORD: "$POSTGRES_PASSWORD"
+            POSTGRES_DB: "$PROJECT"
         volumes:
             - ./postgres_logs:/var/log/postgres
         restart: always
@@ -68,7 +68,7 @@ services:
         container_name: postgres
         ports:
             - "6379:6379"
-        command: redis-server --requirepass $REDIS_PASSWORD
+        command: redis-server --requirepass "$REDIS_PASSWORD"
         volumes:
             - ./redis_logs:/var/log/redis
         restart: always
@@ -117,8 +117,9 @@ EOT
 
     echo "Setup cron jobs successfully."
 
-    chmod +x "$PROJ_PATH/install_rdp_xfce4.sh"
-    bash "$PROJ_PATH/install_rdp_xfce.sh"
+    rdp_install_path = "$PROJ_PATH/install_rdp_xfce4.sh"
+    chmod +x "$rdp_install_path"
+    bash "$rdp_install_path"
     echo "Install RDP xfce4 successfully."
     
 else
