@@ -7,5 +7,5 @@ terraform.tfstate.backup
 *.tfplan
 *.exe filter=lfs diff=lfs merge=lfs -text
 
-sa_key/credentials.json
+sa_key/*
 ssh-keys/*
