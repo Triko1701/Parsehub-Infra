@@ -5,3 +5,12 @@ output "ext_ip" {
         key => item.address
     }
 }
+
+
+# output "test_path" {
+#     value = local.a
+# }
+
+# locals {
+#     a = file("${dirname(abspath(path.root))}\\gcp_project\\credentials.json")
+# }

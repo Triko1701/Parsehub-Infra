@@ -6,13 +6,13 @@ resource "tls_private_key" "ssh" {
 resource "local_file" "public_ssh_key" {
   for_each = tls_private_key.ssh
   content  = each.value.public_key_openssh
-  filename = "${path.module}/ssh-keys/${each.key}_public.pub"
+  filename = "${path.root}/ssh-keys/${each.key}_public.pub"
 }
 
 resource "local_file" "private_ssh_key" {
   for_each = tls_private_key.ssh
   content  = each.value.private_key_openssh
-  filename = "${path.module}/ssh-keys/${each.key}_private"
+  filename = "${path.root}/ssh-keys/${each.key}_private"
 }
 
 resource "random_password" "postgres_redis" {

@@ -1,9 +1,3 @@
-variable "sa_email" {
-  description = "Service account email address"
-  type = string
-  default = "web-scraping@web-scraping-20231227045450030.iam.gserviceaccount.com"
-}
-
 variable "master" {
   description = "Master VM details"
   type = object({

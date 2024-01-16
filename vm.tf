@@ -31,7 +31,7 @@ resource "google_compute_instance" "main" {
   }
 
   service_account {
-    email  = var.sa_email
+    email  = file("gcp_project/sa_email.txt")
     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
 

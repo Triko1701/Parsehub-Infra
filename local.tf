@@ -17,7 +17,7 @@ locals {
             NUM_SLAVES = length(var.parsehub_creds)
             GG_SHEET_URL = var.GG_SHEET_URL
             
-            startup-script = file("${path.module}/startup_script/master.sh")
+            startup-script = file("${path.root}/startup_script/master.sh")
             ssh-keys = tls_private_key.ssh["master"].public_key_openssh
           },
           local.shared_meta
@@ -33,7 +33,7 @@ locals {
         {
           metadata = merge(
             {
-              startup-script = file("${path.module}/startup_script/slave.sh")
+              startup-script = file("${path.root}/startup_script/slave.sh")
               ssh-keys = tls_private_key.ssh["slave"].public_key_openssh
             },
             local.shared_meta,
