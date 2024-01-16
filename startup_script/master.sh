@@ -95,6 +95,8 @@ EOT
     pip3 install -r "$PROJ_PATH/requirements.txt"
     deactivate
 
+    echo "Clone project and setup environment sucessfully."
+
     ##########################################
     ##### INIT DB & CREATE THE CRON JOBS #####
     ##########################################
@@ -113,6 +115,12 @@ EOT
     (crontab -l ; echo "0 0 * * * TZ=Australia/Sydney $ASSIGN_RUNS") | crontab -
     (crontab -l ; echo "*/15 * * * * TZ=Australia/Sydney $CONTROL_SLAVE") | crontab -
 
+    echo "Setup cron jobs successfully."
+
+    chmod +x "$PROJ_PATH/install_rdp_xfce4.sh"
+    bash "$PROJ_PATH/install_rdp_xfce.sh"
+    echo "Install RDP xfce4 successfully."
+    
 else
     echo "Applications have already been initialized."
 fi
