@@ -20,7 +20,9 @@ resource "random_password" "postgres_redis" {
 
   length           = 16
   min_numeric      = 2
-  min_special      = 2
   min_upper        = 2
   min_lower        = 2
+  special          = false
+  # min_special      = 2
+
 }

@@ -23,7 +23,7 @@ if [ ! -d "$PROJ_PATH" ]; then
     ##########################################
 
     # Install packages
-    sudo apt-get install git python3-pip python3-venv jq postgresql-client -y
+    sudo apt-get install git python3-pip python3-venv jq postgresql-client net-tools -y
 
     # Clone the GitHub project
     sudo git clone https://github.com/$USER/$PROJECT.git $PROJ_PATH
@@ -36,14 +36,13 @@ if [ ! -d "$PROJ_PATH" ]; then
     pip3 install -r "$PROJ_PATH/requirements.txt"
     deactivate
 
-    sleep 600
+    project_log_folder="/var/log/$PROJECT"
+    mkdir -p "$project_log_folder"
 
+    sleep 1000
 else
     echo "Applications have already been initialized."
 fi
-
-project_log_folder="/var/log/$PROJECT"
-mkdir -p "$project_log_folder"
 
 source "$VENV_PATH"
 cd "$PROJ_PATH"
@@ -53,5 +52,4 @@ gunicorn -w 1 -b 0.0.0.0:5000 $PROJ_PATH/wsgi:app --daemon --pid gunicorn.pid --
 nohup python3 $PROJ_PATH/trigger_initial_runs.py > $project_log_folder/trigger_initial_runs.log 2>&1 &
 
 echo "Startup script completed successfully."
-
 

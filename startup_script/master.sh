@@ -82,18 +82,17 @@ EOT
     #############################################
 
     # Install packages
-    sudo apt-get install git python3-pip python3-venv jq postgresql-client -y
+    sudo apt-get install git python3-pip python3-venv jq postgresql-client net-tools -y
 
     # Clone the project
     sudo git clone https://github.com/$USER/$PROJECT.git $PROJ_PATH
 
     # Set up the virtual environment
-    VENV="${BASE_DIR}/${PROJECT}_env"
+    VENV="${PROJ_PATH}_env"
     VENV_PATH="$VENV/bin/activate"
     python3 -m venv "$VENV"
     source "$VENV_PATH"
     pip3 install -r "$PROJ_PATH/requirements.txt"
-    deactivate
 
     echo "Clone project and setup environment sucessfully."
 
@@ -109,7 +108,7 @@ EOT
 
     # Cron jobs commands
     ASSIGN_RUNS=". \"$VENV_PATH\" && python3 \"$PROJ_PATH/assign_runs.py\" >> \"$project_log_folder/assign_runs.log\" 2>&1"
-    CONTROL_SLAVE=". \"$VENV_PATH\" && python3 \"$PROJ_PATH/control_slave.py\" >> \"$Parsehub_log_folder/control_slave.log\" 2>&1"
+    CONTROL_SLAVE=". \"$VENV_PATH\" && python3 \"$PROJ_PATH/control_slave.py\" >> \"$project_log_folder/control_slave.log\" 2>&1"
 
     # Add cron jobs
     (crontab -l ; echo "0 0 * * * TZ=Australia/Sydney $ASSIGN_RUNS") | crontab -
