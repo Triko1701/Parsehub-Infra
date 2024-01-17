@@ -47,7 +47,7 @@ fi
 source "$VENV_PATH"
 cd "$PROJ_PATH"
 nohup celery -A make_celery worker --loglevel=info --logfile=$project_log_folder/celery_worker.log --pidfile=$project_log_folder/celery_worker.pid & 
-gunicorn -w 1 -b 0.0.0.0:5000 $PROJ_PATH/wsgi:app --daemon --pid gunicorn.pid --access-logfile $project_log_folder/gunicorn_access.log --error-logfile $project_log_folder/gunicorn_error.log
+gunicorn -w 1 -b 0.0.0.0 wsgi:app --daemon --pid gunicorn.pid --access-logfile $project_log_folder/gunicorn_access.log --error-logfile $project_log_folder/gunicorn_error.log
 
 nohup python3 $PROJ_PATH/trigger_initial_runs.py > $project_log_folder/trigger_initial_runs.log 2>&1 &
 
